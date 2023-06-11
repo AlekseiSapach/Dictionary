@@ -31,6 +31,8 @@ public class HelloController {
 
     public void add(ActionEvent actionEvent)
     {
+        if (Objects.equals(textField.getText(),null))
+            label.isVisible();
         if (!Objects.equals(textField.getText(), null))
         {
             String[] temp = textField.getText().split("-",2);
