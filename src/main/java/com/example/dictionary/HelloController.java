@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Spliterator;
 import java.util.TreeMap;
 
 public class HelloController {
@@ -31,8 +30,6 @@ public class HelloController {
 
     public void add(ActionEvent actionEvent)
     {
-        if (Objects.equals(textField.getText(),null))
-            label.isVisible();
         if (!Objects.equals(textField.getText(), null))
         {
             String[] temp = textField.getText().split("-",2);
@@ -40,8 +37,8 @@ public class HelloController {
             listView.getItems().add(dictionary.keySet());
             listView1.getItems().add(dictionary.values());
             textField.clear();
-
-        }
+        }else
+            label.setText("Введите значение");
     }
 
     public void delete(ActionEvent actionEvent)

@@ -61,7 +61,7 @@
             <Button layoutX="515.0" layoutY="16.0" mnemonicParsing="false" text="Добавить" onAction="#add" />
             <Button layoutX="14.0" layoutY="392.0" mnemonicParsing="false" text="Удалить" onAction="#delete" />
             <Button layoutX="525.0" layoutY="392.0" mnemonicParsing="false" text="Закрыть" onAction="#close" />
-           <Label layoutX="250.0" layoutY="395.0" textFill="red" visible="false" text="Введите значение" fx:id="label"/>
+           <Label layoutX="250.0" layoutY="395.0" textFill="red" fx:id="label"/>
          </children>
     </AnchorPane>
   </children>
