@@ -18,34 +18,36 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 public class HelloController {
-
     public TextField textField = new TextField();
     public ListView listView = new ListView<>();
     public ListView listView1 = new ListView<>();
     public Label label;
     private Map<String, String> dictionary = new TreeMap<>();
 
+
     public void close(ActionEvent actionEvent)
     {
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
     }
-
     public void add(ActionEvent actionEvent) throws IOException {
         if (!Objects.equals(textField.getText(), null))
         {
             String[] temp = textField.getText().split("-",2);
             dictionary.put(temp[0],temp[1]);
             FileWriter file = new FileWriter("words.txt");
-            file.write(dictionary +"\n");
+            file.write(dictionary + "\n");
 
+            textField.clear();
             listView.getItems().add(dictionary.keySet());
             listView1.getItems().add(dictionary.values());
-            textField.clear();
-
+            //dictionary.forEach((key, value) -> {
+               // listView.getItems().add(key);
+               // listView1.getItems().add(value);
+            //});
+            //dict.remove(temp[0],temp[1]);
             file.close();
         }
     }
-
     public void delete(ActionEvent actionEvent)
     {
         int selectedID = listView.getSelectionModel().getSelectedIndex();
