@@ -10,6 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -20,7 +23,6 @@ public class HelloController {
     public ListView listView = new ListView<>();
     public ListView listView1 = new ListView<>();
     public Label label;
-    private String message = "Введите значение";
     private Map<String, String> dictionary = new TreeMap<>();
 
     public void close(ActionEvent actionEvent)
@@ -28,17 +30,20 @@ public class HelloController {
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
     }
 
-    public void add(ActionEvent actionEvent)
-    {
+    public void add(ActionEvent actionEvent) throws IOException {
         if (!Objects.equals(textField.getText(), null))
         {
             String[] temp = textField.getText().split("-",2);
             dictionary.put(temp[0],temp[1]);
+            FileWriter file = new FileWriter("words.txt");
+            file.write(dictionary +"\n");
+
             listView.getItems().add(dictionary.keySet());
             listView1.getItems().add(dictionary.values());
             textField.clear();
-        }else
-            label.setText("Введите значение");
+
+            file.close();
+        }
     }
 
     public void delete(ActionEvent actionEvent)
