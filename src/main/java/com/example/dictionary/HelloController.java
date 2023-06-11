@@ -38,13 +38,12 @@ public class HelloController {
             file.write(dictionary + "\n");
 
             textField.clear();
-            listView.getItems().add(dictionary.keySet());
-            listView1.getItems().add(dictionary.values());
-            //dictionary.forEach((key, value) -> {
-               // listView.getItems().add(key);
-               // listView1.getItems().add(value);
-            //});
-            //dict.remove(temp[0],temp[1]);
+            //listView.getItems().add(dictionary.keySet());
+            //listView1.getItems().add(dictionary.values());
+            dictionary.forEach((key, value) -> {
+                listView.getItems().add(key);
+                listView1.getItems().add(value);
+            });
             file.close();
         }
     }
